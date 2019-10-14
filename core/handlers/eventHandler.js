@@ -12,7 +12,7 @@ module.exports = function constructor() {
     let listeners = [];
     Client.prototype.__listeners = listeners;
 
-    let eventFiles = fs.readdirSync('./events');
+    let eventFiles = fs.readdirSync('../../events');
     try {
         eventFiles.forEach((eventFile) => {
             let eventStat = fs.statSync(`./events/${eventFile}`);

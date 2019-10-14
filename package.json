@@ -1,6 +1,10 @@
 {
   "name": "vaunted",
+<<<<<<< Updated upstream
   "version": "1.0.2",
+=======
+  "version": "1.0.7",
+>>>>>>> Stashed changes
   "description": "",
   "main": "index.js",
   "scripts": {
