@@ -7,7 +7,7 @@
 
 The best open source Discord Command Handler you'll find.
 
-```diff
+
 
 *** 14 October 2019 ***
 + Moderation Preset
@@ -21,4 +21,4 @@ The best open source Discord Command Handler you'll find.
 
 *** Documentation ***
 `npm run moderation` - Creates moderation commands such as: Mute, Ban, Unban, Unmute
-```
+
