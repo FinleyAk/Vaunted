@@ -83,7 +83,7 @@ function configureLogging() {
     let logger = Discord.Client.prototype.logger = log4js.getLogger('Main');
 
     logger.trace('Logger successfully setup');
-};
+}
 
 function createConfig() {
 
