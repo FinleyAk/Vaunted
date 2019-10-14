@@ -22,5 +22,5 @@ The best open source Discord Command Handler you'll find.
 *** Documentation ***
 npm run moderation - Creates moderation commands such as: Mute, Ban, Unban, Unmute
 
-``
+```
 
