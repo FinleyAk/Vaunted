@@ -6,6 +6,7 @@
 ![Actions Status](https://img.shields.io/github/downloads/kalum1/vaunted/total?style=for-the-badge)
 ![Actions Status](https://img.shields.io/discord/506105941498789888?style=for-the-badge)
 ![Actions Status](https://img.shields.io/appveyor/tests/kalum1/vaunted/master?style=for-the-badge)
+![Actions Status](https://img.shields.io/github/languages/top/kalum1/vaunted?style=for-the-badge)
 
 # Vaunted - A collaborative project
 
