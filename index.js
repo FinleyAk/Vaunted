@@ -32,6 +32,9 @@ function main() {
 
     client.on("message", async (message) => {
 
+
+
+
         if (message.content === `<@${client.user.id}>`) {
             return message
                 .channel
@@ -70,6 +73,7 @@ client.on('ready', () => {
             logger.warn(err);
         logger.info('Connected to db');
     })
+
 })
 
 // Configure Logging
