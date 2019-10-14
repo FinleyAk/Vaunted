@@ -8,7 +8,7 @@
 ![Actions Status](https://img.shields.io/appveyor/tests/kalum1/vaunted/master?style=for-the-badge)
 ![Actions Status](https://img.shields.io/github/languages/top/kalum1/vaunted?style=for-the-badge)
 
-# Vaunted - A collaborative project
+# Vaunted - A collaborative Discord.JS project
 
 The best open source Discord Command Handler you'll find.
 
