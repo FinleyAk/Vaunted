@@ -2,6 +2,7 @@
 ![Actions Status](https://img.shields.io/github/forks/Kalum1/Vaunted?style=for-the-badge)
 ![Actions Status](https://img.shields.io/github/stars/Kalum1/Vaunted?style=for-the-badge)
 ![Actions Status](https://img.shields.io/github/license/Kalum1/Vaunted?style=for-the-badge)
+![Actions Status](https://img.shields.io/github/contributors/kalum1/vaunted?style=for-the-badge)
 
 # Vaunted - A collaborative project
 
