@@ -72,7 +72,6 @@ client.on('ready', () => {
 
 })
 
-// Configure Logging
 function configureLogging() {
     log4js.configure(require('./logConfig.js'));
 
