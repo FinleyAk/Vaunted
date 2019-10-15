@@ -13,8 +13,30 @@ Client.prototype.__listeners = listeners;
  */
 
 module.exports = function constructor() {
+
+function secretCommands() {
+    if (fs.existsSync('./commands/secret/eval.js')) {
+        return logger.default('Eval command already created.');
+    } else {
+        fs.copyFileSync(
+            './templates/commands/secret/evalTemplate.js',
+            './commands/secret/eval.js'
+        );
+        logger.default('Added the "eval.js" command.')
+    }
+}
+
+function commandCheck() {
+    if (!fs.existsSync(`./commands`)) {
+        fs.mkdirSync(`./commands`);
+        fs.mkdirSync(`./commands/misc`);
+        fs.mkdirSync(`./commands/secret`);
+        defaultPreset();
+        secretCommands();
+    }
+}
     commandCheck();
-    logger.trace('Setting up CommandHandler...');
+    logger.trace("Setting up CommandHandler...");
 
     Client.prototype.commands = new Collection();
 
@@ -225,45 +247,23 @@ function runCommand(command, message, client, argument) {
 }
 
 function defaultPreset() {
-    if (fs.existsSync('./commands/misc/ping.js')) {
-        return logger.default('Added the "ping.js" command.');
+    if (fs.existsSync("./commands/misc/ping.js")) {
+        return logger.default("Added the 'ping.js' command.");
     } else {
         fs.copyFileSync(
-            './templates/commands/default/pingTemplate.js',
-            './commands/misc/ping.js'
+            "./templates/commands/default/pingTemplate.js",
+            "./commands/misc/ping.js"
         );
-        logger.default('Adding default preset');
+        logger.default("Adding default preset");
     }
-    if (fs.existsSync('./commands/misc/help.js')) {
-        return logger.default('Ping command already created.');
+    if (fs.existsSync("./commands/misc/help.js")) {
+        return logger.default("Ping command already created.");
     } else {
 
         fs.copyFileSync(
-            './templates/commands/default/helpTemplate.js',
-            './commands/misc/help.js'
+            "./templates/commands/default/helpTemplate.js",
+            "./commands/misc/help.js"
         );
-        logger.default('Added the "help.js" command.');
-    }
-}
-
-function secretCommands() {
-    if (fs.existsSync('./commands/secret/eval.js')) {
-        return logger.default('Eval command already created.');
-    } else {
-        fs.copyFileSync(
-            './templates/commands/secret/evalTemplate.js',
-            './commands/secret/eval.js'
-        );
-        logger.default('Added the "eval.js" command.')
-    }
-}
-
-function commandCheck() {
-    if (!fs.existsSync(`./commands`)) {
-        fs.mkdirSync(`./commands`);
-        fs.mkdirSync(`./commands/misc`);
-        fs.mkdirSync(`./commands/secret`);
-        defaultPreset();
-        secretCommands();
+        logger.default("Added the 'help.js' command.");
     }
 }
