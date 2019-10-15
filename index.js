@@ -32,9 +32,6 @@ function main() {
 
     client.on("message", async (message) => {
 
-
-
-
         if (message.content === `<@${client.user.id}>`) {
             return message
                 .channel
@@ -59,7 +56,6 @@ function main() {
     client.login(process.env.BOT_TOKEN);
 }
 
-// Connect to db in different file
 client.on('ready', () => {
     splashscreen();
     configureLogging();
