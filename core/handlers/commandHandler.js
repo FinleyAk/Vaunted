@@ -1,8 +1,8 @@
-const fs = require('fs');
-const log4js = require('log4js');
-const {Client, Collection, Discord} = require('discord.js');
-const logger = log4js.getLogger('CommandHandler');
-require('dotenv').config();
+const fs = require("fs");
+const log4js = require("log4js");
+const {Client, Collection, Discord} = require("discord.js");
+const logger = log4js.getLogger("CommandHandler");
+require("dotenv").config();
 
 
 
@@ -13,16 +13,50 @@ Client.prototype.__listeners = listeners;
  */
 
 module.exports = function constructor() {
-
+    function runCommand(command, message, client, argument) {
+        if (command.ownerOnly) {
+            if (![message.author.id].includes(process.env.OWNER_ID))
+                return;
+            logger.info(
+                `${command.name} command used by: ${message.author.tag} (${message.author.id})`
+            );
+        }
+    
+        if (message.guild) {
+            // noinspection JSUnresolvedVariable
+            if (command.botPerm && !message.guild.me.hasPermission(command.botPerm)) {
+                message
+                    .channel
+                    .send("I don't not have permission to run this command");
+                return;
+            }
+            // noinspection JSUnresolvedVariable
+            if (command.userPerm && !message.member.hasPermission(command.userPerm)) {
+                message
+                    .channel
+                    .send("You don't not have permission to run this command");
+                return;
+            }
+        }
+    
+        try {
+            command.run(message, client, argument);
+        } catch (error) {
+            message
+                .channel
+                .send(`Command failed to run: ${error}`);
+            logger.error(` Command, ${command.name}, errored!\n${error.stack}`);
+        }
+    }
 function secretCommands() {
-    if (fs.existsSync('./commands/secret/eval.js')) {
-        return logger.default('Eval command already created.');
+    if (fs.existsSync("./commands/secret/eval.js")) {
+        return logger.default("Eval command already created.");
     } else {
         fs.copyFileSync(
-            './templates/commands/secret/evalTemplate.js',
-            './commands/secret/eval.js'
+            "./templates/commands/secret/evalTemplate.js",
+            "./commands/secret/eval.js"
         );
-        logger.default('Added the "eval.js" command.')
+        logger.default("Added the 'eval.js' command.")
     }
 }
 
@@ -40,7 +74,7 @@ function commandCheck() {
 
     Client.prototype.commands = new Collection();
 
-    let groupFiles = fs.readdirSync('./commands');
+    let groupFiles = fs.readdirSync("./commands");
 
     try {
         groupFiles.forEach((groupFile) => {
@@ -52,7 +86,7 @@ function commandCheck() {
 
             let commandFiles = fs.readdirSync(`./commands/${groupFile}`);
             commandFiles.forEach((commandFile) => {
-                if (!commandFile.endsWith('.js')) {
+                if (!commandFile.endsWith(".js")) {
                     logger.warn(`${groupFile}/${commandFile} is not a javascript file`);
                     return;
                 }
@@ -84,7 +118,7 @@ function commandCheck() {
                     .forEach((trigger) => {
                         if (trigger.match(/\s/)) {
                             logger.fatal(
-                                `${groupFile}/${commandFile}'s trigger, "${trigger}", contains whitespace`
+                                `${groupFile}/${commandFile}"s trigger, "${trigger}", contains whitespace`
                             );
                             throw new Error();
                         }
@@ -95,7 +129,7 @@ function commandCheck() {
                     .commands
                     .forEach((commandArray) => {
                         if (commandArray.map((cmd) => cmd.name).includes(command.name)) {
-                            logger.error(`${groupFile}/${commandFile}'s name, ${name}, already taken`);
+                            logger.error(`${groupFile}/${commandFile}"s name, ${name}, already taken`);
                             throw new Error();
                         }
 
@@ -105,7 +139,7 @@ function commandCheck() {
                                 triggers.forEach((trigger) => {
                                     if (command.triggers.includes(trigger)) {
                                         logger.error(
-                                            `${groupFile}/${commandFile}'s trigger, ${trigger}, is already taken`
+                                            `${groupFile}/${commandFile}"s trigger, ${trigger}, is already taken`
                                         );
                                         throw new Error();
                                     }
@@ -159,20 +193,21 @@ function commandCheck() {
             return result;
         }
     } catch (ignored) {
-        logger.fatal('Failed to setup the CommandHandler\n' + error.stack);
+        logger.fatal("Failed to setup the CommandHandler\n" + error.stack);
         return true;
     }
 
-    logger.trace('Successfully setup the CommandHandler');
+    logger.trace("Successfully setup the CommandHandler");
 
     Client
         .prototype
         .__listeners
         .push({
-            event: 'message',
+            event: "message",
             function: (message) => {
-                if (message.author.bot) 
+                if (message.author.bot) {
                     return;
+                }
                 
                 //check read perms
 
@@ -190,7 +225,7 @@ function commandCheck() {
                     return;
                 
                 let trigger = parts[1];
-                let argument = parts[2] || '';
+                let argument = parts[2] || "";
 
                 Client
                     .prototype
@@ -201,6 +236,7 @@ function commandCheck() {
                                 .triggers
                                 .forEach((commandTrigger) => {
                                     if (commandTrigger === trigger) {
+                                        
                                         runCommand(command, message, client, argument);
                                     }
                                 });
@@ -210,41 +246,7 @@ function commandCheck() {
         });
 };
 
-function runCommand(command, message, client, argument) {
-    if (command.ownerOnly) {
-        if (![message.author.id].includes(process.env.OWNER_ID))
-            return;
-        logger.info(
-            `${command.name} command used by: ${message.author.tag} (${message.author.id})`
-        );
-    }
 
-    if (message.guild) {
-        // noinspection JSUnresolvedVariable
-        if (command.botPerm && !message.guild.me.hasPermission(command.botPerm)) {
-            message
-                .channel
-                .send("I don't not have permission to run this command");
-            return;
-        }
-        // noinspection JSUnresolvedVariable
-        if (command.userPerm && !message.member.hasPermission(command.userPerm)) {
-            message
-                .channel
-                .send("You don't not have permission to run this command");
-            return;
-        }
-    }
-
-    try {
-        command.run(message, client, argument)
-    } catch (error) {
-        message
-            .channel
-            .send(`Command failed to run: ${error}`);
-        logger.error(` Command, ${command.name}, errored!\n${error.stack}`);
-    }
-}
 
 function defaultPreset() {
     if (fs.existsSync("./commands/misc/ping.js")) {

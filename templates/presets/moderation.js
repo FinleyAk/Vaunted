@@ -30,7 +30,7 @@ function createBan() {
 function createUnmute() {
     if (fs.existsSync("commands/moderation/unmute.js")) {
         console.log(colors.blue("Checking if unmute.js exists..."));
-        console.log(colors.green("unmute.js found. Ignoring."))
+        console.log(colors.green("unmute.js found. Ignoring."));
     } else {
         console.log(colors.blue("Checking if unmute.js exists..."));
         console.log(colors.red("False"));
@@ -45,7 +45,7 @@ if (fs.existsSync("commands/moderation")) {
     createBan();
     createUnmute();
 } else {
-    fs.mkdirSync("commands/moderation")
+    fs.mkdirSync("commands/moderation");
     createMute();
     createBan();
     createUnmute();

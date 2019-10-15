@@ -48,8 +48,8 @@ module.exports = function constructor() {
             logger.debug(`Event loaded: ${eventName}`);
         });
     } catch (error) {
-        logger.fatal('Failed to setup the EventHandler\n' + error.stack);
+        logger.fatal("Failed to setup the EventHandler\n" + error.stack);
         return true;
     }
-    logger.trace('Successfully setup the EventHandler');
+    logger.trace("Successfully setup the EventHandler");
 };
