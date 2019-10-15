@@ -16,8 +16,8 @@ var colors = require('colors');
 splashscreen();
 
 function handle() {
-    process.on('unhandledRejection', (reason, promise) => {
-        console.log('')
+    process.on("unhandledRejection", (reason, promise) => {
+        console.log("")
     })
 }
 function main() {
