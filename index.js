@@ -56,7 +56,6 @@ function main() {
     client.login(process.env.BOT_TOKEN);
 }
 
-// Connect to db in different file
 client.on('ready', () => {
     splashscreen();
     configureLogging();
@@ -70,16 +69,16 @@ client.on('ready', () => {
             logger.warn(err);
         logger.info('Connected to db');
     })
+
 })
 
-// Configure Logging
 function configureLogging() {
     log4js.configure(require('./logConfig.js'));
 
     let logger = Discord.Client.prototype.logger = log4js.getLogger('Main');
 
     logger.trace('Logger successfully setup');
-};
+}
 
 function createConfig() {
 
