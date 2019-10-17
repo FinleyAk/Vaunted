@@ -13,18 +13,16 @@ The best open source Discord Command Handler you'll find.
 
 ```diff
 
-*** 14 October 2019 ***
-+ Moderation Preset
+*** 16 October 2019 ***
+Basic Command Creation
 
 *** Near Future ***
-> Message Handler
-> Fun preset
+SoonTM
 
-! Requires Node v10.15.3
-! Requires Discord.js ^11.5.1
+! Requires Node (Preferably Lastest)
 
 *** Documentation ***
-npm run moderation - Creates moderation commands such as: Mute, Ban, Unban, Unmute
+SoonTM
 
 ```
 
