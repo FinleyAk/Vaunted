@@ -18,8 +18,5 @@
   "dependencies": {
     "discord.js": "^11.5.1",
     "path": "^0.12.7"
-  },
-  "devDependencies": {
-    "minami": "^1.2.3"
   }
 }
