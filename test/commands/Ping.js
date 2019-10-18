@@ -6,7 +6,9 @@ class Ping extends VauntedCommand {
     }
 
     run(client, msg, args) {
-        msg.channel.send('ping ' + client.ping);
+        const embed = this.embed({title: `Ping ${client.ping}`});
+
+        msg.channel.send(embed);
     }
 }
 

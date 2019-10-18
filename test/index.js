@@ -1,4 +1,4 @@
-const { Vaunted } = require('..');
+const { Vaunted } = require("..");
 
 const client = new Vaunted("token", {logging: "INFO", prefix: "v!"});
 
