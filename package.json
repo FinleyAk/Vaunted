@@ -4,7 +4,8 @@
   "description": "A command handler that allows you to easily and neatly make commands using discord.js",
   "main": "index.js",
   "scripts": {
-    "test": "node test/index.js"
+    "test": "node test/index.js",
+    "github": "node index.js"
   },
   "keywords": [
     "vaunted",
@@ -17,5 +18,8 @@
   "dependencies": {
     "discord.js": "^11.5.1",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "minami": "^1.2.3"
   }
 }
