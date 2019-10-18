@@ -11,6 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+Route::get('/', 'RouteController@index')->name('index');
+
+Route::prefix('documentation')->group(function () {
+    Route::get('/', 'DocsController@index')->name('docs_index');
+    Route::get('/global', 'DocsController@global');
+    Route::get('/converter', 'DocsController@converter');
+    Route::get('/vaunted', 'DocsController@vaunted');
+    Route::get('/vauntedCommand', 'DocsController@vauntedCommand');
+    });
