@@ -1,21 +1,29 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "npm run development -- --watch",
-        "watch-poll": "npm run watch -- --watch-poll",
-        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
-    },
-    "devDependencies": {
-        "axios": "^0.19",
-        "cross-env": "^5.1",
-        "laravel-mix": "^4.0.7",
-        "lodash": "^4.17.13",
-        "resolve-url-loader": "^2.3.1",
-        "sass": "^1.15.2",
-        "sass-loader": "^7.1.0"
-    }
+  "name": "vaunted",
+  "version": "1.0.2",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "moderation": "node templates/presets/moderation.js",
+    "ticket": "node templates/presets/ticket.js",
+    "fun": "node templates/presets/fun.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "asciiart-logo": "^0.2.6",
+    "colors": "^1.3.3",
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.1.0",
+    "log4js": "^5.1.0",
+    "mysql": "^2.17.1",
+    "path": "^0.12.7",
+    "python-shell": "^1.0.8"
+  },
+  "devDependencies": {
+    "google-trends-api": "^4.9.0",
+    "grunt-bump": "^0.8.0"
+  }
 }
